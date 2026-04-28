@@ -19,44 +19,44 @@
     rel="stylesheet">
   <style>
     :root {
-      --bg: #080B0E;
-      --surface: #111518;
-      --surface2: #181D22;
-      --surface3: #1F252C;
-      --border: rgba(255, 255, 255, 0.07);
-      --border2: rgba(255, 255, 255, 0.12);
-      --accent: #C8FF00;
-      --accent-glow: rgba(200, 255, 0, 0.18);
-      --accent-dim: rgba(200, 255, 0, 0.10);
-      --text: #F0F2F5;
-      --text2: #7A8290;
-      --text3: #3E454F;
-      --green: #4ADE80;
-      --green-dim: rgba(74, 222, 128, 0.12);
+      --bg: #050507;
+      --surface: #0C0C12;
+      --surface2: #0F0F18;
+      --surface3: #14141F;
+      --border: rgba(255,255,255,0.06);
+      --border2: rgba(255,255,255,0.11);
+      --accent: #6C63FF;
+      --accent-glow: rgba(108,99,255,0.28);
+      --accent-dim: rgba(108,99,255,0.13);
+      --text: #E2E2EE;
+      --text2: #64647A;
+      --text3: #35354A;
+      --green: #34D399;
+      --green-dim: rgba(52,211,153,0.12);
       --red: #F87171;
-      --red-dim: rgba(248, 113, 113, 0.12);
-      --yellow: #FCD34D;
-      --yellow-dim: rgba(252, 211, 77, 0.12);
-      --push: #FF6B35;
-      --pull: #4DABF7;
-      --legs: #69DB7C;
+      --red-dim: rgba(248,113,113,0.12);
+      --yellow: #FBBF24;
+      --yellow-dim: rgba(251,191,36,0.12);
+      --push: #FF6B6B;
+      --pull: #60A5FA;
+      --legs: #34D399;
       --upper: #C084FC;
-      --push-dim: rgba(255, 107, 53, 0.12);
-      --pull-dim: rgba(77, 171, 247, 0.12);
-      --legs-dim: rgba(105, 219, 124, 0.12);
-      --upper-dim: rgba(192, 132, 252, 0.12);
+      --push-dim: rgba(255,107,107,0.12);
+      --pull-dim: rgba(96,165,250,0.12);
+      --legs-dim: rgba(52,211,153,0.12);
+      --upper-dim: rgba(192,132,252,0.12);
       --nutr: #38BDF8;
-      --nutr-dim: rgba(56, 189, 248, 0.12);
-      --radius: 14px;
-      --radius-sm: 8px;
-      --safe-top: env(safe-area-inset-top, 0px);
-      --safe-bottom: env(safe-area-inset-bottom, 0px);
-      --safe-left: env(safe-area-inset-left, 0px);
-      --safe-right: env(safe-area-inset-right, 0px);
-      --nav-h: 64px;
-      --font-head: 'Barlow Condensed', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --font-body: 'Outfit', sans-serif;
+      --nutr-dim: rgba(56,189,248,0.12);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --safe-top: env(safe-area-inset-top,0px);
+      --safe-bottom: env(safe-area-inset-bottom,0px);
+      --safe-left: env(safe-area-inset-left,0px);
+      --safe-right: env(safe-area-inset-right,0px);
+      --nav-h: 66px;
+      --font-head: 'Barlow Condensed',sans-serif;
+      --font-mono: 'JetBrains Mono',monospace;
+      --font-body: 'Outfit',sans-serif;
     }
 
     *,
@@ -151,7 +151,9 @@
     #bottom-nav {
       display: flex;
       align-items: stretch;
-      background: var(--surface);
+      background: rgba(12,12,18,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-top: 1px solid var(--border);
       padding-bottom: var(--safe-bottom);
       height: calc(var(--nav-h) + var(--safe-bottom));
@@ -237,10 +239,10 @@
     }
 
     .card {
-      background: var(--surface);
+      background: linear-gradient(135deg, var(--surface), var(--surface2));
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px
+      padding: 18px
     }
 
     .card+.card {
@@ -312,7 +314,7 @@
       align-items: center;
       gap: 5px;
       background: var(--accent-dim);
-      border: 1px solid rgba(200, 255, 0, 0.2);
+      border: 1px solid rgba(108,99,255,0.25);
       border-radius: 20px;
       padding: 6px 12px;
       font-size: 12px;
@@ -323,20 +325,21 @@
     }
 
     .bw-card {
-      background: var(--surface2);
+      background: linear-gradient(135deg, var(--surface), var(--surface2));
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px;
+      padding: 18px;
       display: flex;
       align-items: center;
       gap: 14px;
       margin-bottom: 8px;
       cursor: pointer;
-      transition: border-color 0.1s
+      transition: border-color 0.2s, transform 0.15s
     }
 
     .bw-card:active {
-      border-color: var(--accent)
+      border-color: var(--accent);
+      transform: scale(0.98)
     }
 
     .bw-icon {
@@ -344,7 +347,7 @@
       height: 44px;
       border-radius: 12px;
       background: var(--accent-dim);
-      border: 1px solid rgba(200, 255, 0, 0.2);
+      border: 1px solid rgba(108,99,255,0.2);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -383,17 +386,18 @@
 
     /* Nutrition summary card on home */
     .nutr-summary-card {
-      background: var(--surface2);
+      background: linear-gradient(135deg, var(--surface), var(--surface2));
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px;
+      padding: 18px;
       margin-bottom: 8px;
       cursor: pointer;
-      transition: border-color 0.1s
+      transition: border-color 0.2s, transform 0.15s
     }
 
     .nutr-summary-card:active {
-      border-color: var(--nutr)
+      border-color: var(--nutr);
+      transform: scale(0.98)
     }
 
     .nutr-summary-top {
@@ -505,43 +509,55 @@
     }
 
     .week-day-dot {
-      height: 5px;
-      border-radius: 3px;
-      background: var(--border);
-      transition: background 0.2s
+      height: 28px;
+      border-radius: 20px;
+      background: var(--surface3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text3);
+      font-family: var(--font-mono);
+      transition: background 0.2s, color 0.2s
     }
 
     .week-day-dot.done {
-      background: var(--accent)
+      background: var(--accent);
+      color: #050507
     }
 
     .week-day-dot.partial {
-      background: rgba(200, 255, 0, 0.4)
+      background: rgba(251,191,36,0.25);
+      color: var(--yellow)
     }
 
     /* BUTTONS */
     .btn-primary {
       width: 100%;
       background: var(--accent);
-      color: #080B0E;
+      color: #fff;
       font-family: var(--font-body);
       font-size: 15px;
       font-weight: 700;
       letter-spacing: 0.01em;
-      padding: 15px;
-      border-radius: var(--radius);
+      padding: 16px;
+      border-radius: 50px;
       border: none;
       cursor: pointer;
-      transition: opacity 0.1s, transform 0.08s;
+      transition: opacity 0.15s, transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px
+      gap: 8px;
+      box-shadow: 0 0 24px var(--accent-glow)
     }
 
     .btn-primary:active {
-      opacity: 0.8;
-      transform: scale(0.98)
+      opacity: 0.85;
+      transform: scale(0.97)
     }
 
     .btn-secondary {
@@ -553,15 +569,16 @@
       font-weight: 600;
       letter-spacing: 0.01em;
       padding: 14px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
+      border-radius: 50px;
+      border: 1px solid var(--border2);
       cursor: pointer;
-      transition: border-color 0.1s, color 0.1s
+      transition: border-color 0.2s, color 0.2s, transform 0.15s
     }
 
     .btn-secondary:active {
       border-color: var(--accent);
-      color: var(--accent)
+      color: var(--accent);
+      transform: scale(0.97)
     }
 
     /* RECENT ITEMS */
@@ -645,9 +662,10 @@
     }
 
     .week-pill.active {
-      background: var(--accent);
-      color: #080B0E;
-      border-color: var(--accent)
+      background: transparent;
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow)
     }
 
     .week-pill.has-data::after {
@@ -662,7 +680,7 @@
     }
 
     .week-pill.active::after {
-      background: #080B0E
+      background: var(--accent)
     }
 
     .day-grid {
@@ -673,22 +691,22 @@
     }
 
     .day-card {
-      background: var(--surface2);
+      background: linear-gradient(150deg, var(--surface2), var(--surface3));
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 14px;
+      padding: 16px 14px 14px;
       cursor: pointer;
-      transition: border-color 0.1s, transform 0.08s;
+      transition: border-color 0.2s, transform 0.15s;
       position: relative;
       overflow: hidden
     }
 
     .day-card:active {
-      transform: scale(0.97)
+      transform: scale(0.96)
     }
 
     .day-card.completed {
-      border-color: rgba(74, 222, 128, 0.25)
+      border-color: rgba(52,211,153,0.3)
     }
 
     .day-card-type {
@@ -745,12 +763,12 @@
 
     .day-card-stripe {
       position: absolute;
-      bottom: 0;
+      top: 0;
       left: 0;
       right: 0;
-      height: 2px;
-      border-radius: 0 0 var(--radius) var(--radius);
-      opacity: 0.5
+      height: 3px;
+      border-radius: var(--radius) var(--radius) 0 0;
+      opacity: 0.9
     }
 
     /* EXERCISE VIEW */
@@ -802,7 +820,7 @@
       align-items: center;
       gap: 8px;
       background: var(--accent-dim);
-      border: 1px solid rgba(200, 255, 0, 0.2);
+      border: 1px solid rgba(108,99,255,0.25);
       border-radius: var(--radius-sm);
       padding: 10px 12px;
       font-size: 12px;
@@ -811,12 +829,17 @@
     }
 
     .exercise-card {
-      background: var(--surface);
+      background: linear-gradient(135deg, var(--surface), var(--surface2));
       border: 1px solid var(--border);
+      border-left: 3px solid var(--border2);
       border-radius: var(--radius);
       margin-bottom: 10px;
       overflow: hidden
     }
+    .exercise-card.type-push { border-left-color: var(--push) }
+    .exercise-card.type-pull { border-left-color: var(--pull) }
+    .exercise-card.type-legs { border-left-color: var(--legs) }
+    .exercise-card.type-upper { border-left-color: var(--upper) }
 
     .exercise-card-header {
       padding: 14px 16px 10px;
@@ -929,16 +952,16 @@
     .set-input {
       background: var(--surface2);
       border: 1px solid var(--border2);
-      border-radius: 8px;
+      border-radius: 10px;
       color: var(--text);
       font-family: var(--font-mono);
-      font-size: 16px;
-      font-weight: 500;
-      padding: 9px 10px;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 12px 10px;
       text-align: center;
       width: 100%;
       transition: border-color 0.15s, box-shadow 0.15s;
-      min-height: 42px
+      min-height: 52px
     }
 
     .set-input:focus {
@@ -953,7 +976,7 @@
     }
 
     .set-input.has-value {
-      border-color: rgba(200, 255, 0, 0.25)
+      border-color: rgba(108,99,255,0.3)
     }
 
     .set-del-btn {
@@ -2621,8 +2644,11 @@
         if (!DB.isDayComplete(App.week, d)) { openDay(App.week, d); return; }
       }
       const nextWeek = App.week + 1;
-      selectWeek(nextWeek); DB.setCurrentWeek(nextWeek); App.week = nextWeek;
-      App.renderWeekScroller(); openDay(nextWeek, 1);
+      App.week = nextWeek;
+      DB.setCurrentWeek(nextWeek);
+      App.renderWeekScroller();
+      selectWeek(nextWeek);
+      openDay(nextWeek, 1);
     }
 
     // ═══════════════════════════════════════════════════════════
@@ -2787,9 +2813,15 @@
       exData.sets.splice(setIdx, 1);
       DB.setWorkout(App.week, App.day, App.workoutData);
       const dayDef = PROGRAM.find(d => d.id === App.day);
-      const ex = dayDef.exercises.find(e => e.id === exId);
+      const effective = getEffectiveExercises(dayDef);
+      const ex = effective.find(e => e.id === exId);
       const card = document.getElementById(`excard-${exId}`);
-      if (card && ex) { const newCard = document.createElement('div'); newCard.innerHTML = renderExerciseCard(App.week, App.day, ex); card.replaceWith(newCard.firstElementChild); }
+      if (card && ex) {
+        const newCard = document.createElement('div');
+        newCard.innerHTML = renderExerciseCard(App.week, App.day, ex);
+        card.replaceWith(newCard.firstElementChild);
+        updateProgressBar(exId);
+      }
     }
 
     function toggleNotes(exId) {
@@ -2824,7 +2856,12 @@
       DB.setNutrDay(App.nutrDate, day);
       const qtyEl = document.getElementById(`food-qty-${foodId}`);
       const itemEl = document.getElementById(`food-item-${foodId}`);
-      if (qtyEl) qtyEl.textContent = newQty;
+      if (qtyEl) {
+        qtyEl.textContent = newQty;
+        qtyEl.classList.remove('num-pulse');
+        void qtyEl.offsetWidth;
+        qtyEl.classList.add('num-pulse');
+      }
       if (itemEl) { if (newQty > 0) itemEl.classList.add('active'); else itemEl.classList.remove('active'); }
       App.renderNutrTotals();
     }
@@ -3149,7 +3186,7 @@
       return `${Math.floor(days / 7)}w ago`;
     }
 
-    function renderExProgress() { App.renderExProgress(); }
+    function renderExProgress() { if (typeof App !== 'undefined' && App.renderExProgress) App.renderExProgress(); }
     function dismissInstall() { DB.dismissInstall(); document.getElementById('install-banner').style.display = 'none'; }
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeBWModal({ target: document.getElementById('bw-modal') }); closeImportModal({ target: document.getElementById('import-modal') }); } });
