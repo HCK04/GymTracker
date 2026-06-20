@@ -1,0 +1,18 @@
+# dependencies
+node_modules/
+
+# secrets & env (VAPID private key, CRON_SECRET, personal info)
+.env
+.env*
+dev-server.mjs
+
+# all markdown (setup notes, plans — kept local only)
+*.md
+
+# not needed for deploy
+test.html
+vercel-cron-PRO-only.json
+
+# build / os
+.vercel
+.DS_Store

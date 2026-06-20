@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gymlog-v1';
+const CACHE_NAME = 'gymlog-v6';
 const ASSETS = [
   '/',
   '/index.html',
@@ -28,6 +28,9 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+  const url = new URL(e.request.url);
+  // Never cache API calls — they must hit the network.
+  if (url.pathname.startsWith('/api/')) return;
   e.respondWith(
     caches.match(e.request).then(cached => {
       if (cached) return cached;
@@ -37,6 +40,38 @@ self.addEventListener('fetch', e => {
         caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
         return res;
       }).catch(() => caches.match('/index.html'));
+    })
+  );
+});
+
+// --- Push notifications ---
+self.addEventListener('push', e => {
+  let d = {};
+  try { d = e.data ? e.data.json() : {}; } catch (_) { d = { body: e.data && e.data.text() }; }
+  const title = d.title || 'GymLog';
+  e.waitUntil(self.registration.showNotification(title, {
+    body: d.body || '',
+    icon: '/icon-192.png',
+    badge: '/icon-192.png',
+    tag: d.tag || 'gymlog',
+    renotify: true,
+    data: { view: d.view || 'home' }
+  }));
+});
+
+self.addEventListener('notificationclick', e => {
+  e.notification.close();
+  const view = (e.notification.data && e.notification.data.view) || 'home';
+  const target = '/?view=' + view;
+  e.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(list => {
+      for (const c of list) {
+        if ('focus' in c) {
+          c.postMessage({ type: 'navigate', view });
+          return c.focus();
+        }
+      }
+      return clients.openWindow(target);
     })
   );
 });

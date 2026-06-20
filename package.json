@@ -1,0 +1,11 @@
+{
+  "name": "gymlog",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal hypertrophy + boxing tracker PWA with push reminders",
+  "dependencies": {
+    "@vercel/kv": "^3.0.0",
+    "web-push": "^3.6.7"
+  }
+}
